@@ -7,9 +7,7 @@ This is a repo used to demonstrate integrations between Katalon and AWS. It acco
 ### Set ENV Variables
 - `REGION=<YOUR DEFAULT REGION>`
 - `AWS_ACCOUNT_ID=<YOUR AWS ACCOUNT>`
-- `KATALON_API_KEY=<YOUR KATALON API KEY>` 
-- `MYSQL_DB_U=<YOUR_MYSQL_USERNAME>`
-- `MYSQL_DB_P=<YOUR_MYSQL_PASSWORD>`
+- `KATALON_API_KEY=<YOUR KATALON API KEY>`
 
 If you need help setting an environment variable, please refer [to this article](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html) for help.
 
