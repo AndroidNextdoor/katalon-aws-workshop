@@ -1,4 +1,7 @@
 # Katalon AWS Workshop
+
+PowerPoint slides from the workshop can be found in `Testaholics_Workshop.pptx`
+
 ### PRE-REQUISITES
 This is a repo used to demonstrate integrations between Katalon and AWS. [It accompanies an AWS Kickstarter here](https://github.com/AndroidNextdoor/aws-kickstarter)
 
