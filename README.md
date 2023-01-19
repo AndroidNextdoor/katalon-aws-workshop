@@ -26,13 +26,9 @@ Many of the scripts in the `_cli` do not actually work without configuration of 
 The `Dockerfile` and `docker-compose.yml` files contain sample configuration that can be used to network a katalon docker instance with a mysql database.
 Sample docker scripts can be found in `_cli/docker` 
 
-### Keywords.jar plugin
-To update the keywords jar for all projects:
-1. Ensure that all projects which require the Keywords.jar plugin are listed within the `updatePlugins` task in
-   build.gradle for :Keywords (Keywords/build.gradle)
-2. Run the `clean` gradle task (Tasks>build>clean)
-3. Run the Keywords specific `katalonPluginPackage` gradle task (Keywords>Tasks>other>katalonPluginPackage) - this step takes a bit of time (can take 5+ minutes), wait for it to finish
-4. Run the Keywords specific `updatePlugins` gradle task (Keywords>Tasks>other>updatePlugins)
-5. Run the Keywords specific `updateEnvManagers` gradle task (Keywords>Tasks>other>updateEnvManagers) - only necessary if EnvManager has been updated
-6. After running this, you will need to run `katalonCopyDependencies` gradle task (Project:Tasks>other>katalonCopyDependencies) again before opening a project in Katalon. If this step is forgotten, errors will be present when opening the project in Katalon.
+### AwsKeywords.jar plugin
+To update the aws keywords jar for all projects:
+1. Run the `clean` gradle task (Tasks>build>clean)
+2. Run the Keywords specific `katalonPluginPackage` gradle task (Keywords>Tasks>other>katalonPluginPackage) - this step takes a bit of time (can take 5+ minutes), wait for it to finish
+3. Finally, you will need to run `katalonCopyDependencies` gradle task (Project:Tasks>other>katalonCopyDependencies) again before opening a project in Katalon. If this step is forgotten, errors will be present when opening the project in Katalon.
 
