@@ -20,7 +20,7 @@ phases:
       - chmod 644 $AWS_CRED_FILE
       - chmod 644 $AWS_CONFIG_FILE
       - bash -x create-creds.sh > /dev/null
-      - cd ../../scripts/docker
+      - cd ../../_cli/docker
       - bash -x init.sh $DOCKER_TAG
       - cd ../../
   pre_build:
