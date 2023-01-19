@@ -1,0 +1,138 @@
+// For a fresh update on the keywords plugin for all projects CLOSE KATALON STUDIO & follow these steps:
+// pre-req. Open the Keywords Project in Katalon Studio (only required if Keywords/Libs directory has been updated)
+
+// 1. run gradle katalonPluginPackage in the Keywords Project
+// 2. run gradle updatePlugins in the Keywords Project
+
+plugins {
+  id 'java'
+  id 'groovy'
+  id 'com.github.johnrengelman.shadow' version '4.0.4'
+  id "com.katalon.gradle-plugin" version "0.0.7"
+}
+
+configurations {
+  compile.exclude group: 'org.seleniumhq.selenium'
+  compile.exclude group: 'commons-io'
+  compile.exclude group: 'com.google.code.gson'
+  compile.exclude group: 'org.hamcrest'
+  compile.exclude group: 'junit'
+  compile.exclude group: 'org.mockito'
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile group: 'software.amazon.awssdk', name: 'devicefarm', version: '2.17.138'
+  compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.29'
+}
+
+sourceSets {
+  main {
+    groovy {
+      srcDirs = ['Libs', 'Keywords', 'Test Listeners', 'Include/scripts/groovy']
+    }
+  }
+}
+
+jar {
+  from fileTree("$buildDir/dependencies/")
+}
+
+shadowJar {
+  exclude 'Temp*.class'
+}
+
+katalon {
+  dependencyPrefix = "com.katalon"
+  minimize = false
+}
+
+task extractDependencies(type: Sync) {
+  dependsOn configurations.compile
+
+  from (configurations.compile.collect {
+    zipTree(it)
+  })
+
+  exclude 'META-INF/**'
+
+  into "$buildDir/dependencies/"
+}
+
+jar.dependsOn extractDependencies
+
+katalonPluginPackage {
+  dependsOn(clean)
+  dependsOn(katalonCopyDependencies)
+  dependsOn(jar)
+  dependsOn(shadowJar)
+}
+
+clean {
+  delete("${project(':AwsKeywords').projectDir}/.cache")
+  delete("${project(':AwsKeywords').projectDir}/build")
+  delete("${project(':AwsKeywords').projectDir}/bin")
+  delete("${project(':AwsKeywords').projectDir}/Reports")
+}
+
+task updatePlugins {
+
+  doLast{
+    def katalonProjects = [project(':Reddit'),project(':ChatGpt')]
+
+    katalonProjects.each {katalonProject ->
+      copy {
+        from("${project(':AwsKeywords').buildDir}/libs"){
+          include 'AwsKeywords-*.jar'
+        }
+
+        into "${katalonProject.projectDir}/Plugins"
+      }
+    }
+  }
+}
+
+ext.deletePreviousPlugins = {
+  def katalonProjects = [project(':Reddit'),project(':ChatGpt')]
+
+  katalonProjects.each {katalonProject ->
+    delete ("${katalonProject.projectDir}/Plugins")
+  }
+}
+
+Integer versionBuild = 0
+
+ext.incrementVersion = {
+
+  def versionPropsFile = file('version.properties')
+
+  /*Setting default value for versionBuild which is the last incremented value stored in the file */
+  if (versionPropsFile.canRead()) {
+    Properties versionProps = new Properties()
+    versionProps.load(new FileInputStream(versionPropsFile))
+    versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
+    versionProps['VERSION_BUILD'] = versionBuild.toString()
+    versionProps.store(versionPropsFile.newWriter(), null)
+  } else {
+    throw new FileNotFoundException("Could not read version.properties!")
+  }
+
+  version = "1.0.${versionBuild.toString()}"
+
+  println "Increment Version to ${version}"
+}
+
+gradle.taskGraph.whenReady {taskGraph ->
+  if (taskGraph.hasTask(':AwsKeywords:katalonPluginPackage')) {
+    incrementVersion()
+  }
+
+  if(taskGraph.hasTask(':AwsKeywords:updatePlugins')){
+    deletePreviousPlugins()
+  }
+}
+
+check.enabled(false)

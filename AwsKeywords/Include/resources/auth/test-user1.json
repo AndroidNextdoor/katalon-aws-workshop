@@ -1,0 +1,9 @@
+{
+	"UserPoolId": "<YOUR_POOLID>",
+	"ClientId": "<CLIENTID>",
+	"AuthFlow": "ADMIN_USER_PASSWORD_AUTH",
+	"AuthParameters": {
+		"USERNAME": "<service>",
+		"PASSWORD": "<pass>"
+	}
+}

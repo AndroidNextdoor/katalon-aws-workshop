@@ -1,0 +1,10 @@
+// You need to allow this type of auth for your Cognito userpool before it can be used. Don't allow ADMIN_USER_PASSWORD_AUTH AuthFlow in production environments.
+{
+	"UserPoolId": "<YOUR_USERPOOL_ID>",
+	"ClientId": "<YOUR_CLIENT_ID>",
+	"AuthFlow": "ADMIN_USER_PASSWORD_AUTH",
+	"AuthParameters": {
+		"USERNAME": "<YOUR_COGNITO_USERNAME>",
+		"PASSWORD": "<YOUR_COGNITO_PASSWORD>"
+	}
+}

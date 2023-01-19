@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'groovy'
+}
+
+version '0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile group: 'software.amazon.awssdk', name: 'devicefarm', version: '2.17.138'
+    compile group: 'software.amazon.awssdk', name: 'secretsmanager', version: '2.17.138'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.29'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
+    // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.13'
+
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+
+    // https://mvnrepository.com/artifact/junit/junit
+    testCompile 'org.junit.jupiter:junit-jupiter:5.8.2'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+assemble {
+  dependsOn('clean')
+}

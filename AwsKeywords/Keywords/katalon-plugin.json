@@ -1,0 +1,10 @@
+{
+  "keywords": [
+    "com.androidnextdoor.katalon.BrowserKeywords",
+    "com.androidnextdoor.katalon.DataSourceKeywords",
+    "com.androidnextdoor.katalon.DownloadKeywords",
+    "com.androidnextdoor.katalon.ForceStopKeywords",
+    "com.androidnextdoor.katalon.ListenerKeywords",
+    "com.androidnextdoor.katalon.NameKeywords"
+  ]
+}

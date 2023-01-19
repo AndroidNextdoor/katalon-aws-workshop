@@ -1,0 +1,49 @@
+version: 0.2
+
+env:
+  secrets-manager:
+    MYSQL_DB_U: ""
+    MYSQL_DB_P: ""
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+    commands:
+      - echo "Starting $PROJECT $TESTING_TYPE"
+      - cd scripts/aws
+      - mkdir /tmp/.aws/
+      - export AWS_CRED_FILE=/tmp/.aws/credentials
+      - export AWS_CONFIG_FILE=/tmp/.aws/config
+      - touch $AWS_CRED_FILE
+      - touch $AWS_CONFIG_FILE
+      - chmod 644 $AWS_CRED_FILE
+      - chmod 644 $AWS_CONFIG_FILE
+      - bash -x create-creds.sh > /dev/null
+      - cd ../../scripts/docker
+      - bash -x init.sh $DOCKER_TAG
+      - cd ../../
+  pre_build:
+    commands:
+      - ./gradlew :$PROJECT:katalonCopyDependencies
+  build:
+    commands:
+      - cd scripts/testing
+      - bash -o verbose KatalonCollection.sh "$PROJECT" "$TEST_PATH" "$URL" "$RETRY_COUNT" "$SOURCE" "$MAX_FAILED"
+    finally:
+      - echo "Testing DONE"
+  post_build:
+    commands:
+      - cd ../docker
+      - bash -x down.sh $DOCKER_TAG
+      - echo "Finished $PROJECT $GIT_BRANCH $DOCKER_TAG"
+reports:
+  $PROJECT-$TESTING_TYPE:
+    files:
+      - '**/*'
+    base-directory: '$PROJECT/Reports'
+artifacts:
+  files:
+    - '$PROJECT/Reports/**/*'
+    - 'mysql/dump/*'
+  name: "$PROJECT-$TESTING_TYPE"

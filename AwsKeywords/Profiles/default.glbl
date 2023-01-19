@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description></description>
+   <name>default</name>
+   <tag></tag>
+   <defaultProfile>true</defaultProfile>
+   <GlobalVariableEntity>
+      <description>Baseline url before testing begins</description>
+      <initValue>'https://reddit.com'</initValue>
+      <name>Starting_Url</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Url of Application Under Test</description>
+      <initValue>'https://chatgpt.com'</initValue>
+      <name>Url</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'default@example.com'</initValue>
+      <name>Username</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'QDZaRaVLpgLi2xAKwpQ6Sciu8QfMZWaYgFsO5m2JItc='</initValue>
+      <name>Password</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'test-user1.json'</initValue>
+      <name>Json_Auth</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Keyword sets this value in the before Test Suite Listener</description>
+      <initValue>''</initValue>
+      <name>Bearer_Token</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>Test_Suite</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>When a test case fails, this variable is populated with the test case name. All other test cases are skipped if one fails.</description>
+      <initValue>''</initValue>
+      <name>Failed_Test_Case</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>Video_Url</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'local'</initValue>
+      <name>Source</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>System_Error</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>This is the Secret Name that is looked up by AWS Secrets Manager </description>
+      <initValue>'mysql'</initValue>
+      <name>Db_Type</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>This is the key that is looked up by Secrets Manager</description>
+      <initValue>'connectionString'</initValue>
+      <name>Db_Connection_String</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'dbUser'</initValue>
+      <name>Db_User</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>This is the Key That is looked up in AWS Secrets Manager</description>
+      <initValue>'dbPassword'</initValue>
+      <name>Db_Password</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Keyword sets this value in before Test Suite Listener</description>
+      <initValue>''</initValue>
+      <name>Grid_Url</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Used to tie key variables to Test Results</description>
+      <initValue>''</initValue>
+      <name>UID</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'admin'</initValue>
+      <name>Aws_Profile</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'us-west-2'</initValue>
+      <name>Aws_Region</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>This is the AWS Secret Name in Secrets Manager</description>
+      <initValue>'reddit/web'</initValue>
+      <name>Device_Farm_Name</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>This is the Key of the Secret in Secrets Manager</description>
+      <initValue>'Reddit-DeviceFarmARN'</initValue>
+      <name>Device_Farm_ARN</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'5e409566-d102-4c1d-8927-c3e9d676891f'</initValue>
+      <name>Device_Farm_Project_ID</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Required if Device Farm is Enabled</description>
+      <initValue>'1200'</initValue>
+      <name>Max_Timeout_Seconds</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'windows'</initValue>
+      <name>Platform</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'chrome'</initValue>
+      <name>Browser</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'latest'</initValue>
+      <name>Browser_Version</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Gathers the web-driver resolution while running</description>
+      <initValue>''</initValue>
+      <name>Resolution</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>Error</name>
+   </GlobalVariableEntity>
+</GlobalVariableEntities>

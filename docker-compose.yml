@@ -1,0 +1,46 @@
+version: "3.5"
+
+services:
+  katalon:
+    container_name: katalon
+    depends_on:
+      - mysql
+    image: $AWS_ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$ORG/katalon:$DOCKER_TAG
+    hostname: katalon
+    working_dir: $TARGET_KATALON_DIR
+    volumes:
+      - ./Reddit:$TARGET_KATALON_DIR/Reddit
+      - ./CNN:$TARGET_KATALON_DIR/CNN
+    network_mode: host
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty: true
+
+  mysql:
+    container_name: mysql_db
+    image: $AWS_ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$ORG/mysql8:$DOCKER_TAG
+    restart: always
+    environment:
+      MYSQL_DATABASE: '$MYSQL_DB'
+      MYSQL_USER: '$MYSQL_DB_U'
+      MYSQL_PASSWORD: '$MYSQL_DB_P'
+    ports:
+      - '3306:3306'
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+    volumes:
+      - ./mysql/data/db_data:/var/lib/mysql:rw
+    healthcheck:
+      test: "cat /proc/net/tcp /proc/net/tcp6 | grep ':0CEA'"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+# Names our volume
+volumes:
+  db_data:

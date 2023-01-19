@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Opens the browser. Throws an Exception if the browser cannot be opened. Usually this only happens if there is a problem communicating with the Selenium Hub.</description>
+   <name>Open Browser</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a7e073c9-9cd0-446a-be24-4e6a77b0ea2f</testCaseGuid>
+</TestCaseEntity>

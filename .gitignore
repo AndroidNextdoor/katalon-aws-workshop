@@ -1,0 +1,41 @@
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+.idea
+.gradle
+# Ignore Gradle build output directory
+build
+
+## project
+*/.classpath
+*/.project
+*/.settings
+*/.cache
+
+## Docker Stuff
+*/bin
+*/boot
+*/dev
+*/etc
+*/home
+*/katalon
+*/settings
+*/lib
+**/Libs
+*/lib64
+*/media
+*/mnt
+*/opt
+*/proc
+*/report
+.*.yml
+
+*/Reports
+*/Drivers/katalon_generated*
+
+.DS_Store

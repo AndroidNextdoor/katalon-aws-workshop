@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Sample API Test to test keyword that gets a bearerToken</description>
+   <name>Bearer Token Test</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a6d297bb-1c67-4571-8249-d255c595f803</testCaseGuid>
+</TestCaseEntity>
