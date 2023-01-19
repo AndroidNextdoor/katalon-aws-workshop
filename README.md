@@ -1,6 +1,6 @@
 # Katalon AWS Workshop
 ### PRE-REQUISITES
-This is a repo used to demonstrate integrations between Katalon and AWS. It accompanies an AWS Kickstarter [here]()
+This is a repo used to demonstrate integrations between Katalon and AWS. [It accompanies an AWS Kickstarter here](https://github.com/AndroidNextdoor/aws-kickstarter)
 
 ### Update your aws credentials file with profiles outline in the AWS-Kickstarter
 
