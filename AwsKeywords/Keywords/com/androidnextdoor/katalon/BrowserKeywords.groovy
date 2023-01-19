@@ -39,7 +39,7 @@ class BrowserKeywords {
 			catch (com.kms.katalon.core.exception.StepFailedException e) {
 				GlobalVariable.Failed_Test_Case = 'Could Not Open Browser'
 				ForceStopKeywords stop = new ForceStopKeywords()
-				stop.forceStop(9)
+				stop.forceStop()
 
 				log.logInfo(e.toString())
 			}
@@ -76,7 +76,7 @@ class BrowserKeywords {
 		}
 
 		if(!finished) {
-			stop.forceStop(1)
+			stop.forceStop()
 		}
 	}
 }

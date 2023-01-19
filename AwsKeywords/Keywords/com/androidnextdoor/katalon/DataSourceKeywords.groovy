@@ -32,7 +32,7 @@ public class DataSourceKeywords {
 		def dbPass =  awsUtils.retrieveSecret(profile, region, GlobalVariable.Db_Type, GlobalVariable.Db_Password)
 
 		println(dbConnectionStr)
-		
+
 		DataSourceUtils dataSource = new DataSourceUtils()
 		connection = dataSource.connectDB(dbType,dbConnectionStr,dbUser,dbPass)
 		return connection

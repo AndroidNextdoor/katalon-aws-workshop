@@ -35,11 +35,7 @@ class AwsTestListener {
 	def beforeTestSuite(TestSuiteContext testSuiteContext) {
 
 		GlobalVariable.Test_Suite = testSuiteContext.getTestSuiteId().replace("Test Suites/","")
-
-		// create UNIQUE_ID and assign to globalVariable.UID
-		GlobalVariable.UID = CustomKeywords.'com.androidnextdoor.katalon.TestUtils.generateUniqueId'()
 		CustomKeywords.'com.androidnextdoor.katalon.ListenerKeywords.initializeWebUI'(testSuiteContext)
-		//CustomKeywords.'com.androidnextdoor.katalon.ListenerKeywords.initializeAPI'(testSuiteContext, START_TIME)
 	}
 
 	/**
