@@ -31,5 +31,6 @@ Sample docker scripts can be found in `_cli/docker`
 To update the aws keywords jar for all projects:
 1. Run the `clean` gradle task (Tasks>build>clean)
 2. Run the Keywords specific `katalonPluginPackage` gradle task (Keywords>Tasks>other>katalonPluginPackage) - this step takes a bit of time (can take 5+ minutes), wait for it to finish
-3. Finally, you will need to run `katalonCopyDependencies` gradle task (Project:Tasks>other>katalonCopyDependencies) again before opening a project in Katalon. If this step is forgotten, errors will be present when opening the project in Katalon.
+3. Move the generated AwsKeywords*.jar file found in `AwsKeywords/build/libs` into the `$PROJECT/Drivers` folder.
+4. Finally, you will need to run `katalonCopyDependencies` gradle task (Project:Tasks>other>katalonCopyDependencies) again before opening a project in Katalon. If this step is forgotten, errors will be present when opening the project in Katalon.
 
